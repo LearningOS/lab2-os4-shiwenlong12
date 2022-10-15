@@ -167,6 +167,7 @@ pub fn translated_byte_buffer(token: usize, ptr: *const u8, len: usize) -> Vec<&
 }
 
 ///通过页表转换泛型并返回可变引用
+//实现虚拟地址到物理地址的转换
 pub fn get_refmut<T>(token: usize, ptr: *mut T) -> &'static mut T {
     let page_table = PageTable::from_token(token);
     let virtual_address = VirtAddr::from(ptr as usize);
