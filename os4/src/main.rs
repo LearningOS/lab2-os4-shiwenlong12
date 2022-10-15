@@ -1,3 +1,11 @@
+//！主模块和入口点
+//! 内核的各种设施被实现为子模块。最重要的是：
+//! - [`trap`]：处理从用户空间切换到内核的所有情况
+//! - [`task`]：任务管理
+//! - [`syscall`]：系统调用处理与实现
+//! 操作系统也在此模块中启动。
+//内核代码从`entry_asm`开始执行，然后调用[`rust_main（）`]来初始化各种功能。
+//! 然后我们调用[`task:：run_first_task（）`]并首次转到userspace。
 #![no_std]
 #![no_main]
 #![feature(panic_info_message)]
