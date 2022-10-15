@@ -33,20 +33,22 @@ pub use context::TaskContext;
 /// Most of `TaskManager` are hidden behind the field `inner`, to defer
 /// borrowing checks to runtime. You can see examples on how to use `inner` in
 /// existing functions on `TaskManager`.
+
 pub struct TaskManager {
     /// total number of tasks
     num_app: usize,
-    /// use inner value to get mutable access
+    //use inner value to get mutable access
     inner: UPSafeCell<TaskManagerInner>,
 }
 
-/// The task manager inner in 'UPSafeCell'
+// The task manager inner in 'UPSafeCell'
 struct TaskManagerInner {
     /// task list
     tasks: Vec<TaskControlBlock>,
     /// id of current `Running` task
     current_task: usize,
 }
+
 
 lazy_static! {
     /// a `TaskManager` instance through lazy_static!
